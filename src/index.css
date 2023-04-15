@@ -3,3 +3,26 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+  html {
+    font-family: 'League Spartan', sans-serif;
+  }
+}
+
+@layer utilities {
+  .shop-now-hover:hover {
+    filter: invert(63%) sepia(57%) saturate(3%) hue-rotate(322deg) brightness(89%) contrast(97%);
+  }
+
+  .list-hover:after {
+    display: block;
+    content: '';
+    border-bottom: solid 3px #000;
+    transform: scaleX(0);
+    transition: transform 250ms ease-in-out;
+  }
+  .list-hover:hover:after {
+    transform: scaleX(1);
+  }
+}
