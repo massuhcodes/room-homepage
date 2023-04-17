@@ -25,4 +25,14 @@
   .list-hover:hover:after {
     transform: scaleX(1);
   }
+
+  .reveal-navbar {
+    transform: translateY(0);
+    transition: transform 250ms ease-out;
+  }
+
+  .hide-navbar {
+    transform: translateY(-7rem);
+    transition: transform 250ms ease-out;
+  }
 }

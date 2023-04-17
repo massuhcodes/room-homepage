@@ -21,12 +21,27 @@ export default function App() {
     } )
   }
 
+  const revealNavbar = () => {
+    const navbar = document.getElementById("navbar") as HTMLDivElement
+    navbar.classList.add("reveal-navbar")
+    navbar.classList.remove("hide-navbar")
+  }
+
+  const hideNavbar = () => {
+    const navbar = document.getElementById("navbar") as HTMLDivElement
+    navbar.classList.add("hide-navbar")
+    navbar.classList.remove("reveal-navbar")
+  }
+
   return (
     <div className="h-full relative">
       {/** Hero */}
       <div className="relative">
         <img src="../src/assets/mobile-image-hero-1.jpg" alt="A table, chair, and bonsai tree" className="w-full" />
-        <h1 className="absolute top-9 w-full text-center text-white text-4xl">room</h1>
+        <div className="absolute top-0 w-full flex items-center bg-black h-28 px-7">
+          <img src={hamburger} alt="hamburger-icon" className="w-6 cursor-pointer" onClick={revealNavbar} />
+          <h1 className="text-white text-4xl">room</h1>
+        </div>
         <div className="flex bg-black absolute bottom-0 right-0">
           <img src={left} alt="left angle" className="hover:bg-[#444444] py-5 px-7" />
           <img src={right} alt="right angle" className="py-5 px-7 hover:bg-[#444444]" />
@@ -59,15 +74,15 @@ export default function App() {
 
       <div id="shadow" className="bg-[#00000095] w-full absolute top-0 bottom-0 hidden">
       </div>
-      <div id="navBar" className="bg-white w-full py-12 absolute top-0 left-0 hidden">
-        <ul className="flex justify-around ml-28">
-          <li className="list-hover"><a href="home">home</a></li>
-          <li className="list-hover"><a href="shop">shop</a></li>
-          <li className="list-hover"><a href="about">about</a></li>
+      <div id="navbar" className="bg-white w-full h-28 absolute top-0 left-0 flex items-center justify-between -translate-y-28 px-7">
+        <img src={close} alt="close-icon" className="cursor-pointer w-5" onClick={hideNavbar}/>
+        <ul className="flex">
+          <li className="list-hover mr-10"><a href="home">home</a></li>
+          <li className="list-hover mr-10"><a href="shop">shop</a></li>
+          <li className="list-hover mr-10"><a href="about">about</a></li>
           <li className="list-hover"><a href="contact">contact</a></li>
         </ul>
       </div>
-      <img src={navbarActiveState ? close : hamburger} alt="navbar-icon" className="absolute top-12 left-6 w-6 cursor-pointer" onClick={handleNavbar} />
     </div>
   )
 }
