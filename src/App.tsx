@@ -5,32 +5,25 @@ import right from "../src/assets/icon-angle-right.svg"
 import arrow from "../src/assets/icon-arrow.svg"
 import hamburger from "../src/assets/icon-hamburger.svg"
 import close from "../src/assets/icon-close.svg"
-import { useState } from "react"
 
 export default function App() {
-
-  const [navbarActiveState, setNavbarActiveState] = useState<boolean>(false)
-
-  const handleNavbar = () => {
-    const shadow = document.getElementById("shadow") as HTMLDivElement
-    const navBar = document.getElementById("navBar") as HTMLDivElement
-    shadow.classList.toggle("hidden")
-    navBar.classList.toggle("hidden")
-    setNavbarActiveState((prevState: boolean): boolean => {
-      return !prevState
-    } )
-  }
 
   const revealNavbar = () => {
     const navbar = document.getElementById("navbar") as HTMLDivElement
     navbar.classList.add("reveal-navbar")
     navbar.classList.remove("hide-navbar")
+    const shadow = document.getElementById("shadow") as HTMLDivElement
+    shadow.classList.add("reveal-shadow")
+    shadow.classList.remove("hide-shadow")
   }
 
   const hideNavbar = () => {
     const navbar = document.getElementById("navbar") as HTMLDivElement
     navbar.classList.add("hide-navbar")
     navbar.classList.remove("reveal-navbar")
+    const shadow = document.getElementById("shadow") as HTMLDivElement
+    shadow.classList.add("hide-shadow")
+    shadow.classList.remove("reveal-shadow")
   }
 
   return (
@@ -38,9 +31,9 @@ export default function App() {
       {/** Hero */}
       <div className="relative">
         <img src="../src/assets/mobile-image-hero-1.jpg" alt="A table, chair, and bonsai tree" className="w-full" />
-        <div className="absolute top-0 w-full flex items-center bg-black h-28 px-7">
+        <div className="absolute top-0 w-full flex items-center h-28 pl-7 pr-[3.25rem]">
           <img src={hamburger} alt="hamburger-icon" className="w-6 cursor-pointer" onClick={revealNavbar} />
-          <h1 className="text-white text-4xl">room</h1>
+          <h1 className="text-white text-4xl w-full text-center">room</h1>
         </div>
         <div className="flex bg-black absolute bottom-0 right-0">
           <img src={left} alt="left angle" className="hover:bg-[#444444] py-5 px-7" />
@@ -72,7 +65,7 @@ export default function App() {
 
       <img src="../src/assets/image-about-light.jpg" alt="A brightened chair" className="w-full" />
 
-      <div id="shadow" className="bg-[#00000095] w-full absolute top-0 bottom-0 hidden">
+      <div id="shadow" className="bg-[#00000095] w-full absolute top-0 bottom-0 hide-shadow">
       </div>
       <div id="navbar" className="bg-white w-full h-28 absolute top-0 left-0 flex items-center justify-between -translate-y-28 px-7">
         <img src={close} alt="close-icon" className="cursor-pointer w-5" onClick={hideNavbar}/>

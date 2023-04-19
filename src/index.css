@@ -35,4 +35,16 @@
     transform: translateY(-7rem);
     transition: transform 250ms ease-out;
   }
+
+  .reveal-shadow {
+    opacity: 1;
+    visibility: visible;
+    transition: opacity 250ms ease-out;
+  }
+
+  .hide-shadow {
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 250ms ease-out;
+  }
 }
